@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Employee Details Salary Slip</title>
+<style>
+.box{
+margin-top:100px;
+margin-left:500px;
+}
+
+input.button {
+
+	padding: 6px 20px;
+	  text-align: center;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin-top:50px;
+	  margin-left:130px;
+	  cursor: pointer;
+}
+.add{
+padding: 30px 30px;
+}
+.fname{
+width:55%;
+}
+.lname{
+width:55%;
+}
+
+.gsal{
+width:55%;
+}
+
+</style>
+<script>
+
+
+		function stringlength(input1,input2)
+		{ 
+		var str1 = input1.value; 
+		var str2 = input2.value;
+		var strlen1 = str1.length ;
+		var strlen2 = str2.length;
+		var len = strlen1 + strlen2;
+		if(len > 15)
+		{ 
+		alert("Please input the name between 1 and 15 characters");
+		return false;
+		}
+		return true;
+		}
+	
+		function checkgsal(input)
+		{ 
+		var sal = input.value; 
+		mywin=window.open('','','width=500,height=500');
+		if(sal < 0)
+		{
+		alert("Please input the salary in positive number");
+		return false;
+		}
+		if(sal < 180000)
+		{ 
+		mywin.document.write("NIL income tax: " + sal);
+		return true;
+		}
+		
+		if(sal >= 180000 && sal <= 300000 )
+		{ 
+		sal = sal - 0.10 * sal;
+		mywin.document.write("Calculated Salary with income tax: " + sal);
+		return true;
+		}
+		
+		if(sal >= 300001 && sal <= 500000 )
+		{ 
+		sal = sal - 0.20 * sal;
+		mywin.document.write("Calculated Salary with income tax: " + sal);
+		return true;
+		}
+		
+		if(sal > 500000)
+		{ 
+		sal = sal - 0.30 * sal;
+		mywin.document.write("Calculated Salary with income tax: " + sal);
+		return true;
+		}
+	}
+
+</script>
+
+</head>
+<body onload='document.form1.fname.focus() && document.form1.lname.focus() && document.form1.gsal.focus()'>
+<div class="box" style= "border-style:solid;padding-left:50px ;padding-right:5px;padding-top:30px;padding-bottom:50px;width:30%;height:400px position:static ">
+<form name="form1" onsubmit="return (stringlength(document.form1.fname,document.form1.lname) && checkgsal(document.form1.gsal))">
+<h1><center>Employee Details</h1><br><br>
+<label for="title"><b>Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+<select>
+		<option value="Title">Title</option>
+		<option value="Mr">Mr.</option>
+		<option value="Mrs">Mrs.</option>
+		<option value="Mrs">Ms.</option>
+</select>
+<br><br>
+	<label for="fname"><b>FirstName:&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+	<input class="fname" type="text" name="fname" required>
+<br><br>
+	<label for="lname"><b>LastName:&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+	<input class="lname" type="text" name="lname" required>
+<br><br>
+	<label for="gsal"><b>Gross Salary:</b></label>
+	<input type="number"class="gsal"  name="gsal" required>
+<br><br>
+	<label for="add"><b>Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+	<input type="address" class="add" name="add" required>
+<br>
+	<input type="submit" class="button"  value="Salary Slip">
+
+</form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
